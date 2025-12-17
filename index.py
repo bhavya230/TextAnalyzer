@@ -29,20 +29,26 @@ with open("text.txt") as file :
 
     print(f"sentence count is {sentence_count}")
 
-    # # 4) Most frequent words : retrieving kth most frequent word
-    # word_frequency={} # dictionary to store each word frequency
-    # for word in list_of_words:
-    #     word_frequency[word]=text.count(word) 
+    # 4) Most frequent words : retrieving kth most frequent word
+    words_frequency={}
 
-    # #sort the dictionary - desceasing order of word frequency
-    # sorted_word_frequency=dict(sorted(word_frequency.items(),key=lambda item: item[1],reverse=True))
+    for word in list_of_words:
+        word=word.lower().strip(".,")
+        if word in words_frequency:
+            words_frequency[word]+=1
+        else:
+            words_frequency[word]=1
+    
+    #SORT BY FREQUENCY
+    sorted_word_frequency=sorted(words_frequency.items(),key=lambda item: item[1], reverse=True)
+    
 
-    # k=int(input("Enter no of most frequent words you want "))
-    # for j in sorted_word_frequency:
-    #     k+=1
-    #     if(k==2):
-    #         break
-    #     print(f"{j} frequency is : {sorted_word_frequency[j]}")
-            
+    k=int(input("enter number of most frequent words : "))
 
+    print("\nMost Frequent Words: ")
+
+    for i in range(k):
+        print(sorted_word_frequency[i][0],":", sorted_word_frequency[i][1])
+
+    file.close()
     
