@@ -1,6 +1,6 @@
 #taking a textfile  as input 
 with open("text.txt") as file :
-    text= file.read()
+    text= file.read().lower()
     #GOAL- COUNT WORDS, CHARACTERS , SENTENCES , MOST FREQUENT WORDS 
 
     # 1) CHARCATERS : not counting tab, space, newline as character 
@@ -32,8 +32,17 @@ with open("text.txt") as file :
     # 4) Most frequent words : retrieving kth most frequent word
     words_frequency={}
 
+    #stopwords set 
+    stopwords = {
+    "the","is","am","are","was","were","and","or","but",
+    "to","of","in","on","for","with","as","by","from",
+    "that","this","it","an","a"
+}
+
     for word in list_of_words:
-        word=word.lower().strip(".,")
+        word=word.strip(".,")
+        if word in stopwords:
+            continue # skip stop words
         if word in words_frequency:
             words_frequency[word]+=1
         else:
