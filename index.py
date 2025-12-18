@@ -20,6 +20,15 @@ with open("text.txt") as file :
 
     print(f"word count is {word_count}")
 
+    # unique words count 
+    unique_words=set()
+    for word in list_of_words:
+        word=word.strip(",.")
+
+        if word!= "":
+            unique_words.add(word)
+    print(f"unique word count is : {len(unique_words)}")
+
     # 3) SENTENCES : AFTER A FULL STOP 
     list_of_sentences=text.split(".")
     sentence_count=0
